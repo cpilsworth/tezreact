@@ -10,8 +10,8 @@ it.
 @import './styles/fonts';
 
 body {
-    background-color: $black;
-    font-family: $font-family-base;
+    background-color: $white;
+    font-family: $font-family-tesco;
     margin: 0;
     padding: 0;
     font-size: $font-size-base;
@@ -91,9 +91,9 @@ button {
   color: $black;
   padding: 12px 40px;
   font-size: $font-size-base;
-  font-family: $font-family-base;
-  border: 1px solid $black;
-  border-radius: 4px;
+  font-family: $font-family-tesco;
+  border: 2px solid $blue;
+  border-radius: 32px;
   min-width: 4rem;
   margin-right: 1rem;
   cursor: pointer;
@@ -106,9 +106,10 @@ button {
     background-color: #ABC123;
   }
   &.dark {
-    border: 1px solid $white;
+    border: 2px solid $blue;
+    border-radius: 32px;
     background: inherit;
-    color: $white;
+    color: $blue;
   }
 }
 
@@ -149,7 +150,7 @@ button {
 }
 
 .menu a, .article-item article a:first-child {
-  color: $white;
+  color: $blue;
 }
 
 .article {
@@ -196,19 +197,20 @@ button {
 }
 
 .header, .footer {
-  background-color: $black;
-  color: $white;
+  background-color: $white;
+  color: $blue;
   display: grid;
   align-items: center;
   max-width: $max-width;
   margin: 0 auto;
   .logo {
-    height: 24px;
+    height: 32px;
   }
   .menu {
     margin: 0;
     display: flex;
     column-gap: 40px;
+    font-size:20px;
   }
 }
 .header {
@@ -219,7 +221,7 @@ button {
     justify-self: flex-start;
   }
   .logo {
-    margin: 44px 0;
+    margin: 32px 0;
   }
   button {
     white-space: nowrap;

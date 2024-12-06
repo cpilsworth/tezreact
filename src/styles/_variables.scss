@@ -18,13 +18,13 @@ $gray-light:             #EBEBEB;
 $gray-lighter:           #F7F7F7;
 $white:                  #FFFFFF;
 $yellow:                 #FFEA00;
-$blue:                   #0045FF;
-$red:                    #ff0048;
+$blue:                   #00539f;
+$red:                    #c30631;
 $lime:                   #DBFF00;
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
-
+$font-family-tesco:  "Tesco", sans-serif;
 $font-family-sans-serif:  "Poppins", "Aktiv Grotesk Medium", sans-serif;
 $font-family-serif:       "Asar",Georgia, "Times New Roman", Times, serif;
 $font-family-base:        system-ui;
@@ -50,12 +50,12 @@ $line-height-base:        1.1;
 $line-height-computed:    floor(($font-size-base * $line-height-base));
 
 // Functional Colors
-$brand-primary:             $yellow;
+$brand-primary:             $blue;
 $body-bg:                   $white;
 $text-color:                $black;
 $text-color-inverse:        $gray-light;
 $link-color:                $blue;
-$button-color:              $lime;
+$button-color:              $white;
 //Layout
 $max-width: 1280px;
 

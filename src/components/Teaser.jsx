@@ -17,7 +17,7 @@ import Loading from './base/Loading';
 import "./Teaser.scss";
 
 const Teaser = () => {
-  const persistentQuery = `wknd-shared/article-by-slug;slug=aloha-spirits-in-northern-norway`;
+  const persistentQuery = `wknd-shared/article-by-slug;slug=christmas-food-recipes-and-ideas`;
   const {data, errorMessage} = useGraphQL(persistentQuery);
   	//If there is an error with the GraphQL query
 	if (errorMessage) return;
@@ -38,19 +38,35 @@ const Teaser = () => {
   return (
 
   <section {...editorProps} className="Teaser">
-    <article>
-      <p>Latest article</p>
-      <h1 data-aue-prop="title" data-aue-type="text">{title}</h1>
-      {synopsis && <div data-aue-prop="synopsis" data-aue-type="richtext">{mapJsonRichText(synopsis.json)}</div>}
-      <div>
-        <span className='pill'>Magazine</span>
-        <span className='pill'>Surfing</span>
+    
+    {/* <div className="teaser">
+      <div className="teaser-image-container">
+        <img className="teaser-image" src={`${getPublishHost()}${featuredImage._path}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />
       </div>
-      <Link to={`/articles/article/aloha-spirits-in-northern-norway${window.location.search}`}>
-        <button>Read more</button>
-      </Link>
-    </article>
-    {featuredImage && <img src={`${getPublishHost()}${featuredImage._path}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />}
+        <div className="teaser-content">
+          <h2 data-aue-prop="title" data-aue-type="text">{title}</h2>
+          {synopsis && <div className="synopsis"><p data-aue-prop="synopsis" data-aue-type="richtext">{mapJsonRichText(synopsis.json)}</p></div>}
+          <Link to={`/articles/article/christmas-food-recipes-and-ideas${window.location.search}`}>
+            <button className="teaser-button">Read more</button>
+          </Link>
+        </div>
+      </div> */}
+      <div class="caro__item" >
+        <div class="caro__img">
+          <img className="caro-image" src={`${getPublishHost()}${featuredImage._path}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />
+        </div>
+        <div class="caro__text">
+          <div class="caro__heading">
+            <h2 data-aue-prop="title" data-aue-type="text">{title}</h2>
+          </div>
+          {synopsis && <div className="caro__para"><p data-aue-prop="synopsis" data-aue-type="richtext">{mapJsonRichText(synopsis.json)}</p></div>}
+          <Link to={`/articles/article/christmas-food-recipes-and-ideas${window.location.search}`}>
+            <button className="teaser-button">Read more</button>
+          </Link>
+        </div>								
+      </div>
+
+    
   </section>
 
 );

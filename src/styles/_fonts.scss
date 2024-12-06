@@ -39,3 +39,25 @@
   font-display: swap;
   src: url(Poppins-Medium.ttf);
 }
+
+
+@font-face {
+	font-family: Tesco;
+	src: url(tesco-webfont-hinted.woff) format("woff");
+	font-weight: 400;
+	font-style: normal
+}
+
+@font-face {
+	font-family: Tesco;
+	src: url(tescob-webfont-hinted.woff) format("woff");
+	font-style: normal;
+	font-weight: 700
+}
+
+// @font-face {
+// 	font-family: Tesco;
+// 	src: url(tescoi-webfont-hinted.woff) format("woff");
+// 	font-style: italic;
+// 	font-weight: 400
+// }

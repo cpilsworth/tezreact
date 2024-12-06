@@ -7,16 +7,19 @@ import Articles from "./components/Articles";
 import ArticleDetail from "./components/ArticleDetail";
 import About from "./components/About";
 import {getAuthorHost, getProtocol, getService} from "./utils/fetchData";
-import logo from "./images/wknd-logo-dk.svg";
+import logo from "./images/tesco-logo-2017.svg";
 import "./App.scss";
 // import { useSparkleAppUrl } from "./hooks";
 
 const NavMenu = () => (
   <nav>
     <ul className="menu">
-      <li><a href={`/${window.location.search}`}>Adventures</a></li>
-      <li><a href={`/articles${window.location.search}`}>Magazine</a></li>
-      <li><a href={`/aboutus${window.location.search}`}>About Us</a></li>
+      <li><a href={`/${window.location.search}`}>Recipes</a></li>
+      <li><a href={`/articles${window.location.search}`}>How to</a></li>
+      <li><a href={`/aboutus${window.location.search}`}>Meals</a></li>
+      <li><a href={`/${window.location.search}`}>Seasonal</a></li>
+      <li><a href={`/articles${window.location.search}`}>Ingredients</a></li>
+      <li><a href={`/aboutus${window.location.search}`}>Christmas</a></li>
     </ul>
   </nav>
 );
@@ -26,7 +29,7 @@ const Header = () => {
   return (
     <header className="header">
         {/*<a href={sparkleAppUrl}><img src={logo} className="logo" alt="WKND Logo" /></a>*/}
-        <img src={logo} className="logo" alt="WKND Logo" />
+        <img src={logo} className="logo" alt="Tesco Logo" />
       <NavMenu />
       <button className="dark">Sign in</button>
     </header>
@@ -35,9 +38,9 @@ const Header = () => {
 
 const Footer = () => (
   <footer className="footer">
-    <img src={logo} className="logo" alt="WKND Logo" />
+    <img src={logo} className="logo" alt="Tesco Logo" />
     <NavMenu />
-    <small>Copyright &copy; 2023 Adobe. All rights reserved</small>
+    <small>Copyright &copy; 2024 Adobe. All rights reserved. Tesco and associated are fully copyright by Tesco limited. Built for demo purposes only</small>
   </footer>
 );
 
