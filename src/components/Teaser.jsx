@@ -16,8 +16,10 @@ import { mapJsonRichText } from '../utils/renderRichText';
 import Loading from './base/Loading';
 import "./Teaser.scss";
 
-const Teaser = () => {
-  const persistentQuery = `wknd-shared/article-by-slug;slug=christmas-food-recipes-and-ideas`;
+
+const Teaser = (props) => {
+  console.log('entering the teaser block');
+  const persistentQuery = `wknd-shared/article-by-slug;slug=${props.item}`;
   const {data, errorMessage} = useGraphQL(persistentQuery);
   	//If there is an error with the GraphQL query
 	if (errorMessage) return;
@@ -26,6 +28,7 @@ const Teaser = () => {
 	if (!data) return <Loading/>;
   
   const article =  getArticle(data);
+  console.log(article);
   if(!article) return <></>
   const { title, _path, featuredImage, synopsis } = article;
 
@@ -38,19 +41,7 @@ const Teaser = () => {
   return (
 
   <section {...editorProps} className="Teaser">
-    
-    {/* <div className="teaser">
-      <div className="teaser-image-container">
-        <img className="teaser-image" src={`${getPublishHost()}${featuredImage._path}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />
-      </div>
-        <div className="teaser-content">
-          <h2 data-aue-prop="title" data-aue-type="text">{title}</h2>
-          {synopsis && <div className="synopsis"><p data-aue-prop="synopsis" data-aue-type="richtext">{mapJsonRichText(synopsis.json)}</p></div>}
-          <Link to={`/articles/article/christmas-food-recipes-and-ideas${window.location.search}`}>
-            <button className="teaser-button">Read more</button>
-          </Link>
-        </div>
-      </div> */}
+
       <div class="caro__item" >
         <div class="caro__img">
           <img className="caro-image" src={`${getPublishHost()}${featuredImage._path}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />

@@ -43,11 +43,12 @@ function AdventureItem(props) {
                 >{props.tripLength?.toLowerCase()}
                 </span>
               </div>
-              <div className="adventure-item-price pill">$
+              <div className="adventure-item-price pill">
                 <span 
                   data-aue-prop="price" data-aue-type="text"
-                  >{props.price}
+                  >{props.groupSize}
                 </span>
+                &nbsp;calories / serving
               </div>
           </div>  
       </li>
@@ -66,7 +67,7 @@ function Adventures(props) {
   if(!data) return <Loading />;
 
   return (
-      <section id="adventures" className="adventures">
+      <section id={`adventures-${props.category}`} className="adventures">
         <Title itemID="urn:aemconnection:/content/wknd/us/en/adventures/jcr:content/root/container/container/title" itemType="text" itemProp="jcr:title"/>      
         <ul className="adventure-items">
           {

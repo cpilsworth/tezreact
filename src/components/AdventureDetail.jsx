@@ -51,7 +51,7 @@ function AdventureDetail() {
     <div  {...editorProps} className="adventure-detail">
         <div><div className="adventure-detail-header">
             <button className="adventure-detail-back-nav dark" onClick={() => navigate(-1)}>
-                <img className="Backbutton-icon" src={backIcon} alt="Return"/> Adventures
+                <img className="Backbutton-icon" src={backIcon} alt="Return"/> Recipes
             </button>
             <h1 className="adventure-detail-title" data-aue-prop="title" data-aue-type="text">{currentAdventure.title}</h1>
             <div className="pill default">
@@ -70,11 +70,13 @@ function AdventureDetailRender({
 								   title,
 								   primaryImage,
 								   adventureType,
+								   activity,
 								   tripLength,
 								   groupSize,
 								   difficulty,
 								   description,
-								   itinerary, references
+								   itinerary,
+								   gearList, references
 							   }) {
 	return (<div>
             <img className="adventure-detail-primaryimage"
@@ -85,13 +87,13 @@ function AdventureDetailRender({
 					 data-aue-type="richtext">{mapJsonRichText(description.json, customRenderOptions(references))}</div>
                 <div className="adventure-detail-info">
                     <div className="adventure-detail-info-label">
-                        <h6>Adventure Type</h6>
+                        <h6>Recipe Type</h6>
                         <span 
 												data-aue-prop='adventureType' data-aue-type="text"
-												>{adventureType}</span>
+												>{activity}</span>
                     </div>
                     <div className="adventure-detail-info-label">
-                        <h6>Trip Length</h6>
+                        <h6>Time to cook</h6>
                         <span 
 												data-aue-prop='tripLength' data-aue-type="text"
 												>{tripLength}</span>
@@ -103,15 +105,18 @@ function AdventureDetailRender({
 												>{difficulty}</span>
                     </div>
                     <div className="adventure-detail-info-label">
-                        <h6>Group Size</h6>
+                        <h6>Calorie per serving</h6>
                         <span 
 												data-aue-prop='groupSize' data-aue-type="text"
 												>{groupSize}</span>
                     </div>
                 </div>
-				<h6>Itinerary</h6>
+				<h2>Ingredients</h2>
 				<div data-aue-prop="itinerary" data-aue-type="richtext"
 					 className="adventure-detail-itinerary">{mapJsonRichText(itinerary.json)}</div>
+				<h2>Method</h2>
+				<div data-aue-prop="gearlist" data-aue-type="richtext"
+					 className="adventure-detail-gearList">{mapJsonRichText(gearList.json)}</div>
 			</div>
 
 		</div>

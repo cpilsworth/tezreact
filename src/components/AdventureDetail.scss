@@ -38,6 +38,7 @@ it.
   > div {
     max-width: $max-width;
     margin: 0 auto;
+    text-align: center;
   }
 }
 
@@ -45,21 +46,23 @@ it.
 
 .adventure-detail-content, .adventure-detail-header {
   padding: 40px 20%;
+  text-align: left;
 }
 
 .adventure-detail-content {
   .adventure-detail-info {
     display: flex;
-    background: $lime;
+    background: $cta-blue;
     border-radius: 16px;
     align-items: flex-start;
     padding: 24px 40px;
     column-gap: 80px;
     justify-content: space-evenly;
     margin: 40px 0;
+    color: $white;
   }
   h6 {
-    color: rgba(0, 0, 0, 0.4);
+    color: $white;
     font-size: 12px;
     text-transform: inherit;
     margin: 0 0 8px 0;
@@ -80,12 +83,11 @@ it.
 .adventure-detail-primaryimage {
   margin: 0 auto;
   border-radius: 16px;
-  aspect-ratio: 16/8;
-  width: 100%;
+  height: 600px;
 }
 
 .adventure-detail-itinerary h2 {
-  font-family: $font-family-base;
+  font-family: $font-family-tesco;
   font-weight: bold;
   font-size: $font-size-large;
 }

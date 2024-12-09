@@ -10,7 +10,7 @@ import React, {useEffect, useMemo} from 'react';
 import {fetchData} from '../../utils/fetchData';
 
 const Title = (props) => {
-  const {resource, prop = "jcr:title", type, className = "test", data: initialData, isComponent = false} = props;
+  const {resource, prop = "jcr:title", type, className = "title", data: initialData, isComponent = false} = props;
   const editorProps = useMemo(() => true && {
     "data-aue-resource": resource,
     "data-aue-prop":prop,

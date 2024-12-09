@@ -20,8 +20,17 @@ import "./Home.scss";
 function Home() {
     return (
         <div className="Home">
-            <Teaser/>
-            <Adventures category="healthy" />
+            <section className="primary-teaser">
+                <Teaser item="christmas-food-recipes-and-ideas"/>
+            </section>
+            <section className="section-one">
+                <Title resource="urn:aemconnection:/content/wknd/us/en/tesco-home/jcr:content/root/container/section_one_title" prop="jcr:title" type="text"/>
+                <Adventures category="healthy" />
+            </section>            
+            <section className="section-two">
+                <Title resource="urn:aemconnection:/content/wknd/us/en/tesco-home/jcr:content/root/container/section_two_title" prop="jcr:title" type="text"/>
+                <Adventures category="world" />
+            </section>   
             <section className="newsletter">
                 <div className="content">
                     <Title resource="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/title" prop="jcr:title" type="text"/>
@@ -29,7 +38,15 @@ function Home() {
                 </div>
                 <button>Subscribe</button>
             </section>
-            <section className="about-us">
+            <section className="section-three">
+                <Title resource="urn:aemconnection:/content/wknd/us/en/tesco-home/jcr:content/root/container/section_three_title" prop="jcr:title" type="text"/>
+                <Adventures category="healthy" />
+            </section>            
+            <section className="section-four">
+                <Title resource="urn:aemconnection:/content/wknd/us/en/tesco-home/jcr:content/root/container/section_four_title" prop="jcr:title" type="text"/>
+                <Adventures category="healthy" />
+            </section>   
+            {/* <section className="about-us">
                 <div className="content">
                     <Title resource="urn:aemconnection:/content/wknd/language-masters/en/universal-editor-container/jcr:content/root/title" prop="jcr:title" type="text"/>
                     <Container resource="urn:aemconnection:/content/wknd/language-masters/en/universal-editor-container/jcr:content/root/container" type="container" />
@@ -37,7 +54,7 @@ function Home() {
                 <Link to={`/aboutus${window.location.search}`}>
                     <button className="dark">Read more</button>
                 </Link>
-            </section>
+            </section> */}
         </div>
     );
 }
