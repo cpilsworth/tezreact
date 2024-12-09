@@ -54,8 +54,8 @@ function AdventureItem(props) {
   );
 }
 
-function Adventures() {
-  const persistentQuery = 'wknd-shared/adventures-all';
+function Adventures(props) {
+  const persistentQuery = `wknd-shared/adventures-by-activity;activity=${props.category}`;
   //Use a custom React Hook to execute the GraphQL query
   const { data, errorMessage } = useGraphQL(persistentQuery);
 

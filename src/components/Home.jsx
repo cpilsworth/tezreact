@@ -20,8 +20,8 @@ import "./Home.scss";
 function Home() {
     return (
         <div className="Home">
-            <Teaser />
-            <Adventures />
+            <Teaser/>
+            <Adventures category="healthy" />
             <section className="newsletter">
                 <div className="content">
                     <Title resource="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/title" prop="jcr:title" type="text"/>
