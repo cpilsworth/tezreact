@@ -36,7 +36,7 @@ function Home() {
                     <Title resource="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/title" prop="jcr:title" type="text"/>
                     <Text resource="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/text" prop="text" type="richtext" />
                 </div>
-                <button>Subscribe</button>
+                <button>Know more</button>
             </section>
             <section className="section-three">
                 <Title resource="urn:aemconnection:/content/wknd/us/en/tesco-home/jcr:content/root/container/section_three_title" prop="jcr:title" type="text"/>
