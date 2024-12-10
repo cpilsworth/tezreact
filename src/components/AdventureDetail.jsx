@@ -14,6 +14,27 @@ import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import useGraphQL from '../api/useGraphQL';
 import {getPublishHost} from "../utils/fetchData";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import ProductList from '../components/ProductList';
+
+const httpLink = createHttpLink({
+	uri: 'https://com526.adobedemo.com/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+	return {
+		headers: {
+			...headers,
+			Store: 'fresh_store',
+		}
+	}
+});
+
+const client = new ApolloClient({
+	link: authLink.concat(httpLink),
+	cache: new InMemoryCache()
+});
 
 function AdventureDetail() {
 	// params hook from React router
@@ -55,7 +76,7 @@ function AdventureDetail() {
             </button>
             <h1 className="adventure-detail-title" data-aue-prop="title" data-aue-type="text">{currentAdventure.title}</h1>
             <div className="pill default">
-							<span 
+							<span
 								data-aue-prop="activity" data-aue-type="text"
 							>{currentAdventure.activity}
 							</span>
@@ -80,33 +101,33 @@ function AdventureDetailRender({
 							   }) {
 	return (<div>
             <img className="adventure-detail-primaryimage"
-					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} data-aue-prop="primaryImage" data-aue-type="media"/>			
+					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} data-aue-prop="primaryImage" data-aue-type="media"/>
 			<div className="adventure-detail-content">
-				
+
 				<div data-aue-prop="description"
 					 data-aue-type="richtext">{mapJsonRichText(description.json, customRenderOptions(references))}</div>
                 <div className="adventure-detail-info">
                     <div className="adventure-detail-info-label">
                         <h6>Recipe Type</h6>
-                        <span 
+                        <span
 												data-aue-prop='adventureType' data-aue-type="text"
 												>{activity}</span>
                     </div>
                     <div className="adventure-detail-info-label">
                         <h6>Time to cook</h6>
-                        <span 
+                        <span
 												data-aue-prop='tripLength' data-aue-type="text"
 												>{tripLength}</span>
                     </div>
                     <div className="adventure-detail-info-label">
                         <h6>Difficulty</h6>
-                        <span 
+                        <span
 												data-aue-prop='difficulty' data-aue-type="text"
 												>{difficulty}</span>
                     </div>
                     <div className="adventure-detail-info-label">
                         <h6>Calorie per serving</h6>
-                        <span 
+                        <span
 												data-aue-prop='groupSize' data-aue-type="text"
 												>{groupSize}</span>
                     </div>
@@ -117,6 +138,11 @@ function AdventureDetailRender({
 				<h2>Method</h2>
 				<div data-aue-prop="gearlist" data-aue-type="richtext"
 					 className="adventure-detail-gearList">{mapJsonRichText(gearList.json)}</div>
+				<ApolloProvider client={client}>
+					<div className="App">
+						<ProductList categoryUid="Mw=="/>
+					</div>
+				</ApolloProvider>
 			</div>
 
 		</div>

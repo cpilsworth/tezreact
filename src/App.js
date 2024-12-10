@@ -1,6 +1,8 @@
 import {React} from "react";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Home from "./components/Home";
 import AdventureDetail from "./components/AdventureDetail";
 import Articles from "./components/Articles";
@@ -9,7 +11,27 @@ import About from "./components/About";
 import {getAuthorHost, getProtocol, getService} from "./utils/fetchData";
 import logo from "./images/tesco-logo-2017.svg";
 import "./App.scss";
+import ProductDetails from "./components/ProductDetails";
+import ProductList from './components/ProductList';
 // import { useSparkleAppUrl } from "./hooks";
+
+const httpLink = createHttpLink({
+    uri: 'https://com526.adobedemo.com/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+    return {
+        headers: {
+            ...headers,
+            Store: 'fresh_store',
+        }
+    }
+});
+
+const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache()
+});
 
 const NavMenu = () => (
   <nav>
@@ -65,10 +87,13 @@ function App() {
               <Route path="/articles/article/:slug" element={<ArticleDetail />} />
               <Route path="/aboutus" element={<About />} />
             </Routes>
+              {/*<ApolloProvider client={client}>
+                  <ProductDetails sku="10001"/>
+              </ApolloProvider>*/}
           </main>
         </Router>
-        <hr/>
-        <Footer/>
+          <hr/>
+          <Footer/>
       </div>
     </HelmetProvider>
   );
