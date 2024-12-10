@@ -97,7 +97,8 @@ function AdventureDetailRender({
 								   difficulty,
 								   description,
 								   itinerary,
-								   gearList, references
+								   gearList,
+								   commerceCategoryId, references
 							   }) {
 	return (<div>
             <img className="adventure-detail-primaryimage"
@@ -139,8 +140,8 @@ function AdventureDetailRender({
 				<div data-aue-prop="gearlist" data-aue-type="richtext"
 					 className="adventure-detail-gearList">{mapJsonRichText(gearList.json)}</div>
 				<ApolloProvider client={client}>
-					<div className="App">
-						<ProductList categoryUid="Mw=="/>
+					<div data-aue-prop='commerceCategoryId' data-aue-type="text" className="App">
+						<ProductList categoryUid={commerceCategoryId}/>
 					</div>
 				</ApolloProvider>
 			</div>
