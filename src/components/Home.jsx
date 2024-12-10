@@ -25,11 +25,11 @@ function Home() {
             </section>
             <section className="section-one">
                 <Title resource="urn:aemconnection:/content/wknd/us/en/tesco-home/jcr:content/root/container/section_one_title" prop="jcr:title" type="text"/>
-                <Adventures category="healthy" />
+                <Adventures category="christmas-party" />
             </section>            
             <section className="section-two">
                 <Title resource="urn:aemconnection:/content/wknd/us/en/tesco-home/jcr:content/root/container/section_two_title" prop="jcr:title" type="text"/>
-                <Adventures category="world" />
+                <Adventures category="healthy" />
             </section>   
             <section className="newsletter">
                 <div className="content">
@@ -40,7 +40,7 @@ function Home() {
             </section>
             <section className="section-three">
                 <Title resource="urn:aemconnection:/content/wknd/us/en/tesco-home/jcr:content/root/container/section_three_title" prop="jcr:title" type="text"/>
-                <Adventures category="healthy" />
+                <Adventures category="world" />
             </section>            
             <section className="section-four">
                 <Title resource="urn:aemconnection:/content/wknd/us/en/tesco-home/jcr:content/root/container/section_four_title" prop="jcr:title" type="text"/>
