@@ -1,8 +1,16 @@
 const {REACT_APP_DEFAULT_AUTHOR_HOST, REACT_APP_DEFAULT_PUBLISH_HOST} = process.env;
 
 export const fetchData = async (path) => {
-	const url = `${getAuthorHost()}/${path.split(":/")[1]}.model.json`;
-	const data = await fetch(url, { headers: {"X-Aem-Affinity-Type": "api"}, credentials: "include"});
+	const url = new URL(window.location.href);
+	const searchParams = new URLSearchParams(url.search);
+	let host = getPublishHost();
+	if (searchParams.has("authorHost")) {
+		host = searchParams.get("authorHost");
+	} else if (url.href.includes('https://experience.adobe.com/#/')) {
+		host = getAuthorHost();
+	}
+	const endpointURL = `${host}/${path.split(":/")[1]}.model.json`;
+	const data = await fetch(endpointURL, { headers: {"X-Aem-Affinity-Type": "api"}, credentials: "include"});
 	const json = await data.json();
 	return json;
 };
