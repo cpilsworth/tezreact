@@ -10,7 +10,7 @@ export const fetchData = async (path) => {
 		host = getAuthorHost();
 	}
 	const endpointURL = `${host}/${path.split(":/")[1]}.model.json`;
-	const data = await fetch(endpointURL, { headers: {"X-Aem-Affinity-Type": "api"}, credentials: "include"});
+	const data = await fetch(endpointURL, { credentials: "include"});
 	const json = await data.json();
 	return json;
 };
