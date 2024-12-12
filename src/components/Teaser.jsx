@@ -18,7 +18,6 @@ import "./Teaser.scss";
 
 
 const Teaser = (props) => {
-  console.log('entering the teaser block');
   const persistentQuery = `wknd-shared/article-by-slug;slug=${props.item}`;
   const {data, errorMessage} = useGraphQL(persistentQuery);
   	//If there is an error with the GraphQL query
@@ -28,7 +27,6 @@ const Teaser = (props) => {
 	if (!data) return <Loading/>;
   
   const article =  getArticle(data);
-  console.log(article);
   if(!article) return <></>
   const { title, _path, featuredImage, synopsis } = article;
 

@@ -7,6 +7,8 @@ it.
 */
 import {useState, useEffect} from 'react';
 import {getAuthorHost} from "../utils/fetchData";
+import {getPublishHost} from "../utils/fetchData";
+import {getHostUrl} from "../utils/fetchData";
 
 const {AEMHeadless} = require('@adobe/aem-headless-client-js')
 const {GRAPHQL_ENDPOINT} = process.env;
