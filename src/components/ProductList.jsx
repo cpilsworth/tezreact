@@ -199,6 +199,7 @@ const ProductList = ({ categoryUid }) => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
+                const skus = categoryUid.split(',').map(sku => sku.trim());
                 const response = await fetch('https://com526.adobedemo.com/graphql', {
                     method: 'POST',
                     headers: {
@@ -207,8 +208,8 @@ const ProductList = ({ categoryUid }) => {
                     },
                     body: JSON.stringify({
                         query: `
-              query GetProducts($categoryUid: String!) {
-                products(filter: { category_uid: { eq: $categoryUid } }) {
+              query GetProducts($skus: [String!]) {
+                products(filter: { sku: { in: $skus } }) {
                   items {
                     id
                     name
@@ -230,7 +231,7 @@ const ProductList = ({ categoryUid }) => {
                 }
               }
             `,
-                        variables: { categoryUid }
+                        variables: { skus }
                     })
                 });
 
@@ -254,37 +255,25 @@ const ProductList = ({ categoryUid }) => {
         fetchProducts();
     }, [categoryUid]);
 
-    const scrollLeft = () => {
-        carouselRef.current.scrollBy({ left: -220, behavior: 'smooth' });
-    };
-
-    const scrollRight = () => {
-        const maxScrollLeft = carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
-        if (carouselRef.current.scrollLeft < maxScrollLeft) {
-            carouselRef.current.scrollBy({ left: 220, behavior: 'smooth' });
-        }
-    };
-
     if (loading) return <div className="spinner">Loading...</div>;
     if (error) return <p>Error: {error.message}</p>;
     if (products.length === 0) return <p>No products found.</p>;
 
     return (
         <div className="product-list-container">
-            <button className="scroll-button left" onClick={scrollLeft}>&lt;</button>
+            <h2>Shop the Ingredients</h2>
             <div className="product-list" ref={carouselRef}>
                 {products.map(product => (
                     <div key={product.id} className="product-item">
                         <h2>{product.name}</h2>
-                        <img src={product.image.url} alt={product.name} />
-                        <div className="description" dangerouslySetInnerHTML={{ __html: product.description.html }} />
+                        <img src={product.image.url} alt={product.name}/>
+                        {/*<div className="description" dangerouslySetInnerHTML={{__html: product.description.html}}/>*/}
                         <p className="price">
                             Price: {product.price_range.minimum_price.regular_price.value} {product.price_range.minimum_price.regular_price.currency}
                         </p>
                     </div>
                 ))}
             </div>
-            <button className="scroll-button right" onClick={scrollRight}>&gt;</button>
         </div>
     );
 };
