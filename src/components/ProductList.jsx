@@ -199,6 +199,9 @@ const ProductList = ({ categoryUid }) => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
+                if (categoryUid === "Mw==") {
+                    categoryUid = "10001,10002,10003";
+                }
                 const skus = categoryUid.split(',').map(sku => sku.trim());
                 const response = await fetch('https://com526.adobedemo.com/graphql', {
                     method: 'POST',
